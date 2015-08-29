@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 robot bubble bath LLC. All rights reserved.
 //
 
-
 @interface SEStatelyNotificationHandler : NSObject
 
 @property (nonatomic, strong, readwrite) NSString *handlerID;
@@ -14,6 +13,3 @@
 @property (nonatomic, strong, readwrite) id notificationHandle;
 
 @end
-
-
-

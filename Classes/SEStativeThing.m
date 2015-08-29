@@ -10,8 +10,4 @@
 
 @implementation SEStativeThing
 
-@synthesize name = _name;
-@synthesize state = _state;
-@synthesize stateInfo = _stateInfo;
-
 @end

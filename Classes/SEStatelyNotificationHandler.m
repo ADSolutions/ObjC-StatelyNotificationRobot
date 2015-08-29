@@ -8,20 +8,11 @@
 
 #import "SEStatelyNotificationHandler.h"
 
-
 @implementation SEStatelyNotificationHandler
 
-@synthesize handlerID = _handlerID;
-@synthesize stativeThingName = _stativeThingName;
-@synthesize notificationHandle = _notificationHandle;
-
-
-
 - (void) dealloc {
-  if (self.notificationHandle != nil)
-    [[NSNotificationCenter defaultCenter] removeObserver: self.notificationHandle];
+    if (self.notificationHandle != nil)
+        [[NSNotificationCenter defaultCenter] removeObserver:self.notificationHandle];
 }
 
 @end
-
-

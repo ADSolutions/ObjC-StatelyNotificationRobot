@@ -8,41 +8,33 @@
 
 #import <Foundation/Foundation.h>
 
-
 // except for SEStateUndefined, these are just for users' convenience -- feel
 // free to ignore/extend/redefine.
-typedef enum {
-  SEStateUnstarted = (1 << 1),
-  SEStateInProgress = (1 << 2),
-  SEStateFinished = (1 << 3),
-  SEStateNotActive = (1 << 4),
-  SEStateUndefined = INT_MAX
-} SEState;
+typedef NS_ENUM(NSUInteger, SEState) {
+    SEStateUnstarted = (1 << 1),
+    SEStateInProgress = (1 << 2),
+    SEStateFinished = (1 << 3),
+    SEStateNotActive = (1 << 4),
+    SEStateUndefined = INT_MAX
+};
 
 typedef void (^SEStateHandlerBlock)(SEState newState, NSDictionary *stateInfo);
-
-
 
 @interface SEStatelyNotificationRobot : NSObject
 
 /* class methods */
 + (SEStatelyNotificationRobot *) sharedRobot;
 
-
 /* instance methods */
-- (void) handleStateOf:(NSString *)stativeThingName handlerID:(NSString *)identifier onQueue:(NSOperationQueue *)queue withBlock:(SEStateHandlerBlock)block;
-- (void) removeHandlerWithID:(NSString *)handlerID;
-- (void) stopTrackingStateOf: (NSString *)stativeThingName;
-- (void) stopTrackingAllStates;
-  
-- (void) changeStateOf:(NSString *)stativeThingName to:(SEState)newState;
-- (void) changeStateOf:(NSString *)stativeThingName to:(SEState)newState stateInfo:(NSDictionary *)stateInfo;
+- (void)handleStateOf:(NSString *)stativeThingName handlerID:(NSString *)identifier onQueue:(NSOperationQueue *)queue withBlock:(SEStateHandlerBlock)block;
+- (void)removeHandlerWithID:(NSString *)handlerID;
+- (void)stopTrackingStateOf: (NSString *)stativeThingName;
+- (void)stopTrackingAllStates;
 
-- (SEState) stateOf:(NSString *)stativeThingName;
-- (NSDictionary *) stateInfoForStateOf:(NSString *)stativeThingName;
+- (void)changeStateOf:(NSString *)stativeThingName to:(SEState)newState;
+- (void)changeStateOf:(NSString *)stativeThingName to:(SEState)newState stateInfo:(NSDictionary *)stateInfo;
 
+- (SEState)stateOf:(NSString *)stativeThingName;
+- (NSDictionary *)stateInfoForStateOf:(NSString *)stativeThingName;
 
 @end
-
-
-
